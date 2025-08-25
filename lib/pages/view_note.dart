@@ -84,7 +84,28 @@ class ViewNote extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsetsGeometry.symmetric(horizontal: 12, vertical: 5),
-          child: Text(note.description, style: TextStyle(fontSize: 18)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'created : ${note.Createdate}',
+                style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
+              ),
+              SizedBox(height: 5),
+              note.updateDate == ''
+                  ? SizedBox(height: 1)
+                  : Text(
+                      'last modified : ${note.updateDate}',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+              Divider(thickness: 2, color: Colors.deepPurple[100]),
+              SizedBox(height: 10),
+              Text(note.description, style: TextStyle(fontSize: 18)),
+            ],
+          ),
         ),
       ),
     );

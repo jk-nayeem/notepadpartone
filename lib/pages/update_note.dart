@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:notepadpartone/controllers/note_controller.dart';
 import 'package:notepadpartone/models/note_model.dart';
 import 'package:notepadpartone/pages/homepage.dart';
@@ -80,12 +81,17 @@ class UpdateNote extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
+                  DateTime nowTimeComplex = DateTime.now();
+                  String nowTime = DateFormat(
+                    'd MMM y, hh:mm a',
+                  ).format(nowTimeComplex);
                   _controller.updateNote(
                     index,
                     NoteModel(
                       title: note.title,
                       description: _noteCon.text,
-                      date: note.date,
+                      Createdate: note.Createdate,
+                      updateDate: nowTime,
                     ),
                   );
                   Navigator.pop(context);

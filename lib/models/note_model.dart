@@ -1,12 +1,14 @@
 class NoteModel {
   String title;
   String description;
-  String date;
+  String Createdate;
+  String updateDate;
   bool isFav;
   NoteModel({
     required this.title,
     required this.description,
-    required this.date,
+    required this.Createdate,
+    this.updateDate = '',
     this.isFav = false,
   });
 }

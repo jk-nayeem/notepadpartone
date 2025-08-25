@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:notepadpartone/controllers/note_controller.dart';
 import 'package:notepadpartone/models/note_model.dart';
 import 'package:notepadpartone/pages/all_note.dart';
@@ -81,11 +82,15 @@ class _HomepageState extends State<Homepage> {
                   ),
                   TextButton(
                     onPressed: () {
+                      DateTime nowTimeComplex = DateTime.now();
+                      String nowTime = DateFormat(
+                        'd MMM y, hh:mm a',
+                      ).format(nowTimeComplex);
                       _controller.addNote(
                         NoteModel(
                           title: _titleCon.text,
                           description: _desCon.text,
-                          date: '21.8.25',
+                          Createdate: nowTime,
                         ),
                       );
                       _titleCon.clear();

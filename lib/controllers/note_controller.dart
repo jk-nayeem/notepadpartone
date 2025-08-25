@@ -38,8 +38,21 @@ class NoteController extends GetxController {
   }
 
   void updateNote(int index, NoteModel note) {
-    notes.removeAt(index);
-    notes.insert(index, note);
-    update();
+    bool tempFav = notes[index].isFav;
+    int inFavIndex = favNotes.indexOf(notes[index]);
+    if (inFavIndex == -1) {
+      notes.removeAt(index);
+      notes.insert(index, note);
+      notes[index].isFav = tempFav;
+      update();
+    } else {
+      notes.removeAt(index);
+      notes.insert(index, note);
+      notes[index].isFav = tempFav;
+
+      favNotes.removeAt(inFavIndex);
+      favNotes.insert(inFavIndex, note);
+      update();
+    }
   }
 }
